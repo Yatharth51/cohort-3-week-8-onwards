@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="button_div">
+
+    </div>
+    <script>
+        state = {
+            count : 0 
+        } ;
+        function on_click(){
+            state.count++ ;
+            render_button();
+        }
+        
+        function render_button(){
+            let num = document.getElementById('btn').innerHTML.split(" ")[1];
+            document.getElementById('btn').innerHTML = "Count "+ (parseInt(num)+1);
+        }
+        
+        function component(){
+            const newbutton = document.createElement("button") ;
+            newbutton.innerHTML = "Count " + state.count ;
+            newbutton.setAttribute("onclick","on_click()");
+            newbutton.setAttribute("id","btn");
+            const parentdiv = document.querySelector(".button_div")
+            parentdiv.appendChild(newbutton)
+        }
+        component();
+
+    </script>
+</body>
+</html>
