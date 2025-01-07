@@ -56,7 +56,6 @@ function App() {
   function update(e){
     setVal(e.target.value) ;
   }
-  
   useEffect(()=>{
     console.log(val);
   },[debouncedVal])
