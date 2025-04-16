@@ -166,6 +166,16 @@ app.delete('/api/v1/content',userMiddleware,async (req,res)=>{
 
 })
 
+app.post('/api/v1/brain/share', async (req,res)=>{
+
+})
+
+app.get('/api/v1/brain/:shareLink', async (req,res)=>{
+    
+})
+
+
+
 async function main() {
     await mongoose.connect(mongo_url);
     app.listen(3000, (err) => {

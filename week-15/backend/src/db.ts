@@ -1,4 +1,4 @@
-import mongoose, { StringSchemaDefinition } from "mongoose" ;
+import mongoose from "mongoose" ;
 import zod from "zod"
 const ObjectId = mongoose.Types.ObjectId ;
 
@@ -23,7 +23,7 @@ const TagSchema = new mongoose.Schema({
 
 const LinkSchema = new mongoose.Schema({
     hash : {type : String, required: true} ,
-    userid : {type : ObjectId, required : true}
+    userid : {type : ObjectId, required : true, ref : "user"}
 }) ;
 
 
