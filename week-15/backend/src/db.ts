@@ -1,5 +1,4 @@
 import mongoose from "mongoose" ;
-import zod from "zod"
 const ObjectId = mongoose.Types.ObjectId ;
 
 const UserSchema = new mongoose.Schema({

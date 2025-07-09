@@ -1,23 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Count } from './components/counts'
-import { RecoilRoot } from 'recoil'
-import { Buttons } from './components/buttons'
+import './App.css' 
+import {atom,useRecoilValue,useSetRecoilState,RecoilRoot} from "recoil"
 
-function App() {
+const Atom = atom({
+    key : 'Count',
+    default : 0
+  }) ;
 
-
-  return (
-    <>
-    <RecoilRoot>
-      <Count/>
-      <Buttons/>
-    </RecoilRoot>
-      
-    </>
-  )
+function Count(){
+  const count = useRecoilValue(Atom) ;
+  return (<div>{count}</div>) ;
 }
 
-export default App
+function UpdateCountButton(){
+  const setCount = useSetRecoilState(Atom);
+  return (<button onClick={()=>setCount(c=>c+1)}>Press to Increase</button>) ;
+}
+
+
+export default function App(){
+
+  return (
+    <RecoilRoot>
+      <Count/>
+      <UpdateCountButton />
+    </RecoilRoot>
+    
+  )
+}
