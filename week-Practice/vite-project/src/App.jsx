@@ -1,30 +1,28 @@
-import { useState } from 'react'
+import { createContext, useEffect, useReducer, useRef, useState } from 'react'
 import './App.css' 
-import {atom,useRecoilValue,useSetRecoilState,RecoilRoot} from "recoil"
+import {RecoilRoot,useSetRecoilState,useRecoilValue,atom} from "recoil" ;
 
-const Atom = atom({
-    key : 'Count',
-    default : 0
-  }) ;
+const countAtom = atom({
+  key : "counter",
+  default : 0
+}) ;
 
-function Count(){
-  const count = useRecoilValue(Atom) ;
-  return (<div>{count}</div>) ;
+function IncreaseCountButton(){
+  const setCount = useSetRecoilState(countAtom) ;
+  return <button onClick={()=>setCount(c=>c+1)}>Press to increase Count</button>
 }
 
-function UpdateCountButton(){
-  const setCount = useSetRecoilState(Atom);
-  return (<button onClick={()=>setCount(c=>c+1)}>Press to Increase</button>) ;
+const Counter = () => {
+  const count = useRecoilValue(countAtom) ;
+  return <div>{count}</div>
 }
 
 
 export default function App(){
-
-  return (
-    <RecoilRoot>
-      <Count/>
-      <UpdateCountButton />
-    </RecoilRoot>
-    
-  )
+  return (<div>
+  <RecoilRoot>
+    <Counter/>
+    <IncreaseCountButton/>
+  </RecoilRoot>
+  </div>)
 }
